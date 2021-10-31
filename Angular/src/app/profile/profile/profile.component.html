@@ -1,0 +1,72 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="login100-more" style="background-image: url('assets/images/m2.jpg');"></div>
+
+    <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+
+      <div class="limiter">
+
+
+        <div class="container-login100">
+          <div class="wrap-login100">
+
+
+            <form [formGroup]="ProfileForm">
+              <span class="login100-form-title">
+                Profile
+              </span>
+              <!-- <label for="name">Email</label> -->
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">Email</span>
+                <input class="input100" type="text" name="name" placeholder="Email" formControlName="email">
+                <span class="focus-input100"></span>
+              </div>
+
+              <span class="err-msg  err"
+                *ngIf="ProfileForm.get('email').touched &&  ProfileForm.get('email').hasError('required')">
+                Required Field
+              </span>
+              <!-- <label for="name">user</label> -->
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">Username</span>
+                <input class="input100" type="text" name="name" placeholder="username" formControlName="username">
+                <span class="focus-input100"></span>
+              </div>
+              <span class="err-msg err"
+                *ngIf="ProfileForm.get('username').touched &&  ProfileForm.get('username').hasError('required')">
+                Required Field
+              </span><br>
+              <!-- <label for="name">Name</label> -->
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">Name</span>
+                <input class="input100" type="text" name="name" placeholder="name" formControlName="name">
+                <span class="focus-input100"></span>
+              </div>
+              <span class="err-msg  err"
+                *ngIf="ProfileForm.get('name').touched &&  ProfileForm.get('name').hasError('required')">
+                Required Field
+              </span><br>
+              <!-- <label for="name">Mobile Number</label><br> -->
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">Mobilenumber</span>
+                <input class="input100" type="text" name="name" placeholder="mobilenumber"
+                  formControlName="mobilenumber">
+                <span class="focus-input100"></span>
+              </div>
+              <span class="err-msg  err"
+                *ngIf="ProfileForm.get('mobilenumber').touched &&  ProfileForm.get('mobilenumber').hasError('required')">
+                Required Field
+              </span><br>
+       
+              
+              <!-- <label for="name">Password</label><br> -->
+              <button class="btn btn-primary pull-right" style="margin-top:5px" routerLink="/petlover">Back</button>
+              <button class="btn btn-primary pull-right" style="margin-top:5px" (click)="SaveRegistrationdata()">Update</button>
+             
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

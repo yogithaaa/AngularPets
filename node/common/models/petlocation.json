@@ -1,0 +1,32 @@
+{
+  "name": "petlocation",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "latitude": {
+      "type": "string"
+    },
+    "longitude": {
+      "type": "string"
+    },
+    "createddate": {
+      "type": "string"
+    },
+    "createdtime": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "currentpet": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

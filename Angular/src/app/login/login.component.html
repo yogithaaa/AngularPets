@@ -1,0 +1,91 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="login100-more" style="background-image: url('assets/images/df.jpg');"></div>
+
+    <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+
+      <div class="limiter">
+
+
+        <div class="container-login100">
+          <div class="wrap-login100">
+
+
+            <form *ngIf="!forgotPassoword" [formGroup]="loginForm">
+              <span class="login100-form-title">
+                Login
+              </span>
+              <!-- <label for="name">username</label> -->
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">UserName</span>
+                <input class="input100" type="text" name="name" placeholder="Username" formControlName="username">
+                <span class="focus-input100"></span>
+              </div>
+              <span class="err-msg err" *ngIf="loginForm.get('username').touched &&  loginForm.get('username').hasError('required')">
+                Please Enter Valid username
+              </span>
+              <!-- <label for="name">Password</label> -->
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">Password</span>
+                <input class="input100" type="password" name="name" placeholder="Password" formControlName="password">
+                <span class="focus-input100"></span>
+              </div>
+              <span class="err-msg  err" *ngIf="loginForm.get('password').touched &&  loginForm.get('password').hasError('required')">
+                Please Enter Valid password
+              </span>
+              <div class="text-center p-t-136">
+                <a class="txt2"
+                (click)="toggleForm()"
+                style="color:black;margin-left: 280px;cursor:pointer">
+                  Forgot Password?
+                  <i 
+                  class="m-l-5" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div class="container-login100-form-btn">
+                <button (click)="valSignInForm(loginForm)" type="submit" class="btn btn-primary btn-block">Sign
+                  in</button>
+              </div>
+              <div class="text-center p-t-136">
+                <a class="txt2" routerLink="/registration">
+                  Create an Account
+                  <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                </a>
+              </div>
+
+            </form>
+            <form  *ngIf="forgotPassoword" [formGroup]="forgotPasswordForm">
+                <i 
+                (click)="toggleForm()"
+                style="cursor: pointer"
+                class="fa fa-arrow-left" aria-hidden="true"></i>
+              <span class="login100-form-title">
+                Forgot Password
+              </span>
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">Please Enter Registered Email</span>
+                <input class="input100" type="text" name="name" placeholder="Email" formControlName="email">
+                <span class="focus-input100"></span>
+              </div>
+              <span class="err-msg err" *ngIf="forgotPasswordForm.get('email').touched &&  forgotPasswordForm.get('email').hasError('required')">
+                Please Enter Valid Email
+              </span>
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">Please Enter Registered Mobile Number</span>
+                <input class="input100" type="text" name="name" placeholder="Phone Number" formControlName="phn">
+                <span class="focus-input100"></span>
+              </div>
+              <span class="err-msg err" *ngIf="forgotPasswordForm.get('phn').touched &&  forgotPasswordForm.get('phn').invalid 
+              ">
+                Please Enter Valid Phn Number
+              </span>
+              <div class="container-login100-form-btn">
+                <button [disabled]="disableForgot" (click)="forgotPasswordEmail(forgotPasswordForm)" type="submit" class="btn btn-primary btn-block">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

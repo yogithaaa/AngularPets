@@ -1,0 +1,59 @@
+{
+  "name": "petdetails",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "boolean",
+      "required": false
+    },
+    "petname": {
+      "type": "string",
+      "required": true,
+      "default": "100"
+    },
+    "breed": {
+      "type": "string",
+      "required": true,
+      "default": "100"
+    },
+    "dob": {
+      "type": "string",
+      "required": true
+    },
+    "weight": {
+      "type": "string",
+      "required": true,
+      "default": "10"
+    },
+    "height": {
+      "type": "string",
+      "required": true,
+      "default": "10"
+    },
+    "chipid": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "required": true,
+      "default": "2"
+    },
+    "loginid": {
+      "type": "string",
+      "required": true,
+      "default": "100"
+    },
+    "alarmstatus": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

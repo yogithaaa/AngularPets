@@ -1,0 +1,73 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="login100-more" style="background-image: url('assets/images/m.jpg');"></div>
+    <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+      <div class="limiter">
+        <div class="container-login100">
+          <div class="wrap-login100">
+            <button class="pull right">
+              <span class="login100-form-title">
+                Hi <h3>{{profiledataaaa.name}} !</h3>
+              </span>
+            </button>
+
+            <img src="https://ae01.alicdn.com/kf/HTB1icTDMXXXXXcDXXXXq6xXFXXXG/-.jpg" alt="IMG" height="100px" width="100px" class="img">
+            <div class="row">
+              <div class="col-md-4">
+                  <button class="btn btn-info " (click)="navigateTo()">Add Pet Details</button>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-md-4">
+                  <button class="btn btn-success" (click)="profiledata()" >My Profile</button>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-md-4">
+                  <button type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#myModal">Change Password</button> 
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-md-4">
+                  <button class="btn btn-primary pull-left" (click)="signOut()">Sign Out</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Change Password</h4>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="ProfileForm">
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">oldpass</span>
+                <input class="input100" type="password" name="name" placeholder="oldpass" formControlName="oldpass">
+                <span class="focus-input100"></span>
+              </div><br>
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">newpass</span>
+                <input class="input100" type="password" name="name" placeholder="newpass" formControlName="newpass">
+                <span class="focus-input100"></span></div>
+            </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary pull-right" style="margin-top:5px" (click)="changepass()" data-dismiss="modal">changepassword</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

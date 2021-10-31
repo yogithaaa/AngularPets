@@ -1,0 +1,23 @@
+{
+  "name": "currentpetmst",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "currentpetid": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "usermstid": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

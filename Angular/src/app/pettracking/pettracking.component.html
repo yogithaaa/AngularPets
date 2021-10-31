@@ -1,0 +1,52 @@
+<div class="container" style="margin-top:100px">
+  <h2 style="text-align:center;margin-bottom:5px">Pet Tracking</h2>
+  <div class="card">
+    <div class="card-title" style="margin-top: 5px;margin-right:5px;margin-left:5px">
+      <button class="btn btn-secondary pull-left"
+      (click)="downloadTrack()"
+      >Database</button>
+      <button
+      (click)="toggleMap()"
+        style="margin-left: 10px ;"
+        class="btn btn-info"
+      >Live Location</button>
+      <button
+      [disabled]="disableBtn"
+      class="btn btn-danger pull-right" 
+      (click)="trackMypet()" >Voice Module</button>
+    </div>
+    <div
+      *ngIf="voiceModule"
+    class="card-body">
+        <img *ngIf="disableBtn"  style="height: 50px ;widows: 50px;" src="https://media2.giphy.com/media/3orif8dSLPZt4POUGk/giphy.gif"/> 
+        <p>Current Location : {{fullAddress}}</p>
+      <!-- <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2857.034704542701!2d-78.37651848465478!3d44.268105620468795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d58de55d6a684d%3A0xb6640a9914b11dab!2sFleming+College+Way%2C+Peterborough%2C+ON%2C+Canada!5e0!3m2!1sen!2sin!4v1555335662922!5m2!1sen!2sin"
+        width="1070" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+        <agm-map [latitude]="lat" [longitude]="lng">
+          <agm-marker [latitude]="lat" [longitude]="lng">
+              <agm-circle [latitude]="lat" [longitude]="lng"
+              [(radius)]="circleRadius"
+              [fillColor]="'blue'"
+              [circleDraggable]="true"
+              [editable]="true"></agm-circle>
+          </agm-marker>
+        </agm-map>
+    </div>
+    <div
+      *ngIf="!voiceModule"
+    class="card-body">
+        <p>Live Location : {{liveLocationAddr}}</p>
+        <agm-map [latitude]="liveLat" [longitude]="liveLng">
+          <agm-marker [latitude]="liveLat" [longitude]="liveLng">
+              <agm-circle [latitude]="liveLat" [longitude]="liveLng"
+              [(radius)]="circleRadius"
+              [fillColor]="'blue'"
+              [circleDraggable]="true"
+              [editable]="true"></agm-circle>
+          </agm-marker>
+        </agm-map>
+    </div>
+  </div>
+  <button class="btn btn-primary pull-right" style="margin-top:5px;margin-bottom: 30px" routerLink="/petdetails">Back</button>
+</div>

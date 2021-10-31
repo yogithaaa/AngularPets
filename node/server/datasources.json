@@ -1,0 +1,33 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "openwifitask": {
+    "host": "localhost",
+    "port": 3306,
+    "url": "",
+    "database": "Pets",
+    "password": "admin123",
+    "name": "openwifitask",
+    "user": "admin",
+    "connector": "mysql"
+  },
+  "email": {
+    "name": "email",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "SMTP",
+        "host": "smtp.elasticemail.com",
+        "port": 2525,
+        "accessKeyId": "45d7c795-a826-4d97-9725-4074b509a474",
+        "secretAccessKey": "b282ddd2-4569-472b-aecf-a3a9a976267d",
+        "auth": {
+          "user": "hemantham002@gmail.com",
+          "pass": "b282ddd2-4569-472b-aecf-a3a9a976267d"
+        }
+      }
+    ]
+  }
+}

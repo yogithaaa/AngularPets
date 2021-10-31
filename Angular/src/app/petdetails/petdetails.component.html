@@ -1,0 +1,164 @@
+<div class="header">
+  <!-- <a class="logo">Pet Details</a> -->
+  <div class="header-right">
+    <a class="active" routerLink="/petlover">Home</a>
+    <!-- <a href="#contact">Contact</a> -->
+    <a (click)="signOut()">Logout</a>
+  </div>
+</div>
+<Form [formGroup]="PetdetailsForm">
+  <h2 style="text-align:center;margin-top: 10px;margin-bottom: 10px">Pet Details</h2>
+  <div class="container">
+    <div class="card">
+      <div class="card-title"></div>
+      <div class="card-body">
+        <div class="row">
+          <div class="container padding">
+            <div class="row">
+              <div class="col-md-4">
+
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" size="30" formControlName="petname" pInputText>
+                  <label for="float-input">PET Name</label>
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="PetdetailsForm.get('petname').touched &&  PetdetailsForm.get('petname').hasError('required')">
+                  Required Field
+                </span>
+              </div>
+              <div class="col-md-4">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" size="30" formControlName="breed" pInputText>
+                  <label for="float-input">Breed</label>
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="PetdetailsForm.get('breed').touched &&  PetdetailsForm.get('breed').hasError('required')">
+                  Required Field
+                </span>
+              </div>
+              <div class="col-md-4">
+                <span class="ui-float-label">
+                  <p-calendar placeholder="" editable="editable" formControlName="dob" dateFormat="dd/mm/yy"
+                    [readonlyInput]="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="1947:2080"
+                    [inputStyle]="{'width':'140%'}">
+                  </p-calendar>
+                  <label for="float-input">Date of Birth</label>
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="PetdetailsForm.get('dob').touched &&  PetdetailsForm.get('dob').hasError('required')">
+                  Required Field
+                </span>
+              </div>
+              <div></div>
+              <br>
+              <div class="col-md-4">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" size="30" formControlName="weight" pInputText>
+                  <label for="float-input">Weight</label>
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="PetdetailsForm.get('weight').touched &&  PetdetailsForm.get('weight').hasError('required')">
+                  Required Field
+                </span>
+              </div>
+              <div class="col-md-4">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" size="30" formControlName="height" pInputText>
+                  <label for="float-input">Height</label>
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="PetdetailsForm.get('height').touched &&  PetdetailsForm.get('height').hasError('required')">
+                  Required Field
+                </span>
+              </div>
+              <div class="col-md-4">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" size="30" formControlName="chipid" pInputText>
+                  <label for="float-input">ChipID</label>
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="PetdetailsForm.get('chipid').touched &&  PetdetailsForm.get('chipid').hasError('required')">
+                  Required Field
+                </span>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="container-login100-form-btn">
+                    <button [disabled]="disableButton" (click)="reset()" type="submit"
+                      class="btn btn-info pull-left">Reset</button>
+                  </div>
+                </div>
+                <div *ngIf="!update"  class="col-md-4">
+                  <div class="container-login100-form-btn">
+                    <button   [disabled]="disableButton"
+                      (click)="SaveRegistrationdata(PetdetailsForm.value,PetdetailsForm)" type="submit"
+                      class="btn btn-success pull-right">Save</button>
+                       <button *ngIf="update" [disabled]="disableButton"
+                      (click)="update=false;reset();" 
+                      class="btn btn-success pull-right">Cancel</button>
+                  </div>
+                </div>
+                <div  *ngIf="update"  class="col-md-4">
+                  <div class="container-login100-form-btn">
+                       <button   [disabled]="disableButton"
+                      (click)="updatePetDtls()" 
+                      class="btn btn-success pull-left ">Update</button>
+                  </div>
+                   <div class="container-login100-form-btn">
+                   <button  [disabled]="disableButton"
+                      (click)="update=false;reset();" 
+                      class="btn btn-success pull-right ">Cancel</button>
+                   </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <h1>Pet List</h1>
+        <table class="table table-boarder">
+          <thead>
+            <tr>
+              <th>Sno</th>
+              <th>Pet Name</th>
+              <th>Breed</th>
+              <th>Date of Birth</th>
+              <th>Weight</th>
+              <th>Height</th>
+              <th>Chip ID</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let x of data; let idx = index">
+              <td>{{idx+1}}</td>
+              <td>{{x.petname}}</td>
+              <td>{{x.breed}}</td>
+              <td>{{x.dob | date:'dd-MM-yyyy'}}</td>
+              <td>{{x.weight}}</td>
+              <td>{{x.height}}</td>
+              <td>{{x.chipid}}</td>
+              <td><button class="btn btn-info" (click)="goToTracking(x.id)"><span class="fa fa-eye"></span></button>
+              <!--<button class="btn btn-info" (click)="deletePet(x.id)"><span class="fa fa-trash"></span></button>-->
+               <button
+      class="btn btn-info"
+      mwlConfirmationPopover
+      [popoverTitle]="Confirm"
+      [popoverMessage]="popoverMessage"
+      placement="right"
+      (confirm)="deletePet(x.id)"
+      (cancel)="cancelClicked = true">
+     <span class="fa fa-trash"></span>
+    </button>
+              <!-- <button class="btn btn-info" (click)="editPet(idx)"><span class="fa fa-pencil"></span></button> -->
+              </td>
+            </tr>
+          </tbody>
+          
+        </table>
+        
+      </div>
+    </div>
+
+  </div>
+</Form>

@@ -1,0 +1,143 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="login100-more" style="background-image: url('assets/images/m2.jpg');"></div>
+    <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+      <div class="limiter">
+        <div class="container-login100">
+          <div class="wrap-login100">
+            <form [formGroup]="RegForm">
+              <span class="login100-form-title heading">
+                Registration
+              </span>
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">Email ID</span>
+                <input class="input100" type="text" name="name" placeholder="Email ID" formControlName="email">
+                <span class="focus-input100"></span>
+              </div>
+              <div class="error" style="margin-bottom:15px">
+                <span class="err-msg  err"
+                  *ngIf="RegForm.get('email').touched &&  RegForm.get('email').hasError('required')">
+                  Required Field
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="RegForm.get('email').touched &&  RegForm.get('email').hasError('pattern')">
+                  Enter Valid Email ID
+                </span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">User Name</span>
+                <input class="input100" type="text" name="name" placeholder="User Name" formControlName="username">
+                <span class="focus-input100"></span>
+              </div>
+              <div class="error" style="margin-bottom:15px">
+                <span class="err-msg err"
+                  *ngIf="RegForm.get('username').touched &&  RegForm.get('username').hasError('required')">
+                  Required Field
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="RegForm.get('username').touched &&  RegForm.get('username').hasError('minlength')">
+                  Minimum Characters of 3 Characters
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="RegForm.get('username').touched &&  RegForm.get('username').hasError('maxlength')">
+                  Don't Exceed 30 Characters
+                </span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">Name</span>
+                <input class="input100" type="text" name="name" placeholder=" Name" formControlName="name">
+                <span class="focus-input100"></span>
+              </div>
+              <div class="error" style="margin-bottom:15px">
+                <span class="err-msg  err"
+                  *ngIf="RegForm.get('name').touched &&  RegForm.get('name').hasError('required')">
+                  Required Field
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="RegForm.get('name').touched &&  RegForm.get('name').hasError('minlength')">
+                  Minimum Characters of 3 Characters
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="RegForm.get('name').touched &&  RegForm.get('name').hasError('maxlength')">
+                  Don't Exceed 30 Characters
+                </span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">Mobile Number</span>
+                <input class="input100" type="text" name="name" placeholder="Mobile Number"
+                  formControlName="mobilenumber">
+                <span class="focus-input100"></span>
+              </div>
+              <div class="error" style="margin-bottom:15px">
+                <span class="err-msg  err"
+                  *ngIf="RegForm.get('mobilenumber').touched &&  RegForm.get('mobilenumber').hasError('required')">
+                  Required Field
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="RegForm.get('mobilenumber').touched &&  RegForm.get('mobilenumber').hasError('pattern')">
+                  Enter valid Mobile Number
+                </span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">Password</span>
+                <input class="input100" type="password" name="name" placeholder="Password" formControlName="password">
+                <span class="focus-input100"></span>
+              </div>
+              <div class="error" style="margin-bottom:15px">
+                <span class="err-msg  err"
+                  *ngIf="RegForm.get('password').touched &&  RegForm.get('password').hasError('required')">
+                  Required Field
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="RegForm.get('password').touched &&  RegForm.get('password').hasError('minlength')">
+                  Minimum Characters of 3 Characters
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="RegForm.get('password').touched &&  RegForm.get('password').hasError('maxlength')">
+                  Don't Exceed 8 Characters
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="passwordPatternError">
+                  Password requirements - eight characters should include one upper case-letter,one lower case ,one numeric,one special character
+                </span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">Confirm Password</span>
+                <input class="input100" type="password" name="name" placeholder="Confirm Password"
+                  formControlName="confirmpassword" (input)="checkPassword($event.target.value)">
+                <span class="focus-input100"></span>
+              </div>
+              <div class="error" style="margin-bottom:15px">
+                <span class="err-msg  err"
+                  *ngIf="RegForm.get('confirmpassword').touched &&  RegForm.get('confirmpassword').hasError('required')">
+                  <li>Required Field</li>
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="RegForm.get('confirmpassword').touched &&  RegForm.get('confirmpassword').hasError('minlength')">
+                  <li>Minimum Characters of 3 Characters</li>
+                </span>
+                <span class="err-msg  err"
+                  *ngIf="RegForm.get('confirmpassword').touched &&  RegForm.get('confirmpassword').hasError('maxlength')">
+                  <li>Don't Exceed 8 Characters</li>
+                </span>
+                <span class="err-msg  err" *ngIf="ischeckPassword">
+                  <li>Password don't match</li>
+                </span>
+              </div>
+              <div class="container-login100-form-btn">
+                <button [disabled]="disableButton" (click)="SaveRegistrationdata(RegForm.value,RegForm)" type="submit"
+                  class="btn btn-primary btn-block">Sign Up</button>
+              </div>
+              <div class="text-center p-t-136">
+                <a class="txt2" routerLink="">
+                  Login
+                  <i class="fa fa-sign-in m-l-5" aria-hidden="true"></i>
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
