@@ -1,1 +1,2 @@
 # AngularPets
+#Sample Angular app
